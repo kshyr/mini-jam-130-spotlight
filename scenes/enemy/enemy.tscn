@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://bmh2dyyf4jq0q"]
+
+[ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_cq0mg"]
+[ext_resource type="Texture2D" uid="uid://ccouy33u6u47b" path="res://assets/players grey x2.png" id="2_dpit1"]
+[ext_resource type="Script" path="res://scenes/enemy/RayCast2D.gd" id="3_fcly6"]
+[ext_resource type="AudioStream" uid="uid://2rej02ha7r36" path="res://assets/547040__eponn__hit-swing-sword-small-2.wav" id="3_uw6mx"]
+[ext_resource type="Texture2D" uid="uid://cny8mqw6tej2s" path="res://assets/knife_trace.png" id="5_l6wa7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lhigp"]
+radius = 11.0454
+
+[sub_resource type="Animation" id="Animation_wu50v"]
+resource_name = "dead"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5708]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 1.35,
+"start_offset": 0.02,
+"stream": ExtResource("3_uw6mx")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yebds"]
+_data = {
+"dead": SubResource("Animation_wu50v")
+}
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_cq0mg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_dpit1")
+offset = Vector2(0, -16)
+hframes = 8
+vframes = 13
+frame = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lhigp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yebds")
+}
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collide_with_areas = true
+script = ExtResource("3_fcly6")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="KnifeAttack" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.843137)
+texture = ExtResource("5_l6wa7")
+hframes = 2
+vframes = 2

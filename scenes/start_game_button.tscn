@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://f86h0e2a2jay"]
+
+[ext_resource type="Texture2D" uid="uid://hwdes5vxpx2b" path="res://assets/start-button.png" id="1_8gb5j"]
+[ext_resource type="Texture2D" uid="uid://clr323manlpe" path="res://assets/start-button-pressed.png" id="2_8uhx2"]
+[ext_resource type="Script" path="res://scenes/title_screen/StartGame.gd" id="3_qejss"]
+
+[node name="StartGame" type="TextureButton"]
+modulate = Color(0.152941, 0.152941, 0.152941, 1)
+texture_normal = ExtResource("1_8gb5j")
+texture_pressed = ExtResource("2_8uhx2")
+script = ExtResource("3_qejss")

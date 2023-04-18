@@ -1,0 +1,263 @@
+[gd_scene load_steps=13 format=3 uid="uid://bt24magosqxh0"]
+
+[ext_resource type="Script" path="res://scenes/title_screen/title_screen.gd" id="1_12ohh"]
+[ext_resource type="Texture2D" uid="uid://pr2rbwyyfic7" path="res://assets/title-light.png" id="1_hs2xk"]
+[ext_resource type="Texture2D" uid="uid://c5cj5lr03atbv" path="res://assets/title.png" id="2_3o4jq"]
+[ext_resource type="Texture2D" uid="uid://y5wgccjvxvrn" path="res://assets/pictureLightMask_thumb.png" id="3_rfsw3"]
+[ext_resource type="PackedScene" uid="uid://f86h0e2a2jay" path="res://scenes/start_game_button.tscn" id="6_nwmvh"]
+[ext_resource type="PackedScene" uid="uid://56ycx2uhs8ci" path="res://scenes/tutorial/tutorial.tscn" id="7_33e2c"]
+[ext_resource type="AudioStream" uid="uid://cm6f82e630x7v" path="res://assets/538915__garuda1982__switch-on-the-fluorescent-tube-sound-effect.wav" id="7_d7sl7"]
+
+[sub_resource type="Animation" id="Animation_ieicg"]
+resource_name = "title"
+length = 6.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 0.9, 1.3, 1.5, 1.9, 2, 2.2, 2.3),
+"transitions": PackedFloat32Array(0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107),
+"update": 0,
+"values": [Color(0.65098, 0.65098, 0.65098, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.356863, 0.356863, 0.356863, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.356863, 0.356863, 0.356863, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.356863, 0.356863, 0.356863, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Sprite2D2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.3, 1.5, 2.1),
+"transitions": PackedFloat32Array(1e-05, 0.0980731, 0.225313, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.886275, 0.886275, 0.886275, 1), Color(0.784314, 0.784314, 0.784314, 1), Color(0.85098, 0.85098, 0.85098, 1), Color(0.666667, 0.666667, 0.666667, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.9, 1.2, 1.4, 1.9, 2, 2.2, 2.3, 3, 3.3, 3.5, 4.1, 4.2, 4.4, 4.5, 5.1, 5.6, 5.9, 6.1),
+"transitions": PackedFloat32Array(0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224),
+"update": 0,
+"values": [0.45, 0.71, 0.89, 0.19, 1.24, 1.0, 0.45, 1.0, 0.45, 0.89, 0.19, 1.24, 1.0, 0.45, 1.0, 0.45, 0.71, 0.89, 0.19, 1.24]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("PointLight2D:texture_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.9, 1.2, 1.4, 1.9, 2, 2.2, 2.3, 3, 3.3, 3.5, 4.1, 4.2, 4.4, 4.5, 5.1, 5.6, 5.9, 6.1),
+"transitions": PackedFloat32Array(0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224, 0.210224),
+"update": 0,
+"values": [0.45, 0.71, 0.89, 0.19, 1.24, 1.0, 0.45, 1.0, 0.45, 0.89, 0.19, 1.24, 1.0, 0.45, 1.0, 0.45, 0.71, 0.89, 0.19, 1.24]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Container/VBoxContainer/StartGame:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.9, 1.3, 1.5, 1.9, 2, 2.2, 2.3, 3, 3.4, 3.6, 4.1, 4.2, 4.4, 4.5, 5.6, 5.9, 6.1),
+"transitions": PackedFloat32Array(1, 1, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107),
+"update": 0,
+"values": [Color(0.423529, 0.423529, 0.423529, 1), Color(0.537255, 0.537255, 0.537255, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.356863, 0.356863, 0.356863, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.356863, 0.356863, 0.356863, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.356863, 0.356863, 0.356863, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.356863, 0.356863, 0.356863, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.356863, 0.356863, 0.356863, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.356863, 0.356863, 0.356863, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.356863, 0.356863, 0.356863, 1), Color(0.584314, 0.584314, 0.584314, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.9, 1.3, 1.5, 1.9, 2, 2.2, 2.3, 3, 3.4, 3.6, 4.1, 4.2, 4.4, 4.5, 5.6, 5.9, 6.1),
+"transitions": PackedFloat32Array(1, 1, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107, 0.707107),
+"update": 0,
+"values": [Color(0.423529, 0.423529, 0.423529, 1), Color(0.537255, 0.537255, 0.537255, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.356863, 0.356863, 0.356863, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.356863, 0.356863, 0.356863, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.356863, 0.356863, 0.356863, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.356863, 0.356863, 0.356863, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.356863, 0.356863, 0.356863, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.356863, 0.356863, 0.356863, 1), Color(0.584314, 0.584314, 0.584314, 1), Color(0.356863, 0.356863, 0.356863, 1), Color(0.584314, 0.584314, 0.584314, 1)]
+}
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 8.95,
+"start_offset": 4.0,
+"stream": ExtResource("7_d7sl7")
+}, {
+"end_offset": 8.07,
+"start_offset": 3.61,
+"stream": ExtResource("7_d7sl7")
+}],
+"times": PackedFloat32Array(0, 2.61)
+}
+tracks/6/use_blend = true
+
+[sub_resource type="Animation" id="Animation_7bh6g"]
+resource_name = "title_screen_sounds"
+length = 3.3
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 12.15,
+"start_offset": 0.0,
+"stream": ExtResource("7_d7sl7")
+}],
+"times": PackedFloat32Array(-0.1)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.9, 2.3, 2.7, 2.9, 3.2),
+"transitions": PackedFloat32Array(1.86607, 2.92818, 18.3792, 4.75684, 0.00571911, 0.0980733),
+"update": 0,
+"values": [0.0, 0.193763, 0.44, 0.0, 0.3, 0.78]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2.1),
+"transitions": PackedFloat32Array(1e+06, 0.0504278, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0.442206, 0.442206, 0.442206, 1), Color(0.442206, 0.442206, 0.442206, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2.1),
+"transitions": PackedFloat32Array(1e+06, 1e-05, 1),
+"update": 0,
+"values": [Color(0.152941, 0.152941, 0.152941, 1), Color(0.282353, 0.282353, 0.282353, 1), Color(0.509804, 0.509804, 0.509804, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Container/VBoxContainer/StartGame:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 2.1),
+"transitions": PackedFloat32Array(1e+06, 1e-05, 1),
+"update": 0,
+"values": [Color(0.152941, 0.152941, 0.152941, 1), Color(0.282353, 0.282353, 0.282353, 1), Color(0.509804, 0.509804, 0.509804, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ejkne"]
+resource_name = "title_screen_sounds_2"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rffui"]
+_data = {
+"title": SubResource("Animation_ieicg"),
+"title_screen_sounds_1": SubResource("Animation_7bh6g"),
+"title_screen_sounds_2": SubResource("Animation_ejkne")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3pa20"]
+viewport_path = NodePath("SubViewport")
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_12ohh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 1)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(300, 100)
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+position = Vector2(155, 54)
+texture = ExtResource("1_hs2xk")
+
+[node name="Sprite2D2" type="Sprite2D" parent="SubViewport"]
+modulate = Color(0.152941, 0.152941, 0.152941, 1)
+position = Vector2(155, 50)
+texture = ExtResource("2_3o4jq")
+
+[node name="PointLight2D" type="PointLight2D" parent="SubViewport"]
+position = Vector2(115, 60)
+energy = 0.0385705
+texture = ExtResource("3_rfsw3")
+texture_scale = 1.3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewport"]
+libraries = {
+"": SubResource("AnimationLibrary_rffui")
+}
+next/title_screen_sounds_1 = &"title"
+blend_times = [&"title_screen_sounds_1", &"title", 4.0]
+
+[node name="Container" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 32
+
+[node name="TextureRect" type="TextureRect" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = SubResource("ViewportTexture_3pa20")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="StartGame" parent="Container/VBoxContainer" instance=ExtResource("6_nwmvh")]
+layout_mode = 2
+to_scene = ExtResource("7_33e2c")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_d7sl7")
+autoplay = true

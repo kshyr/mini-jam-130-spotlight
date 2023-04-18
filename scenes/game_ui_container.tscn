@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=3 uid="uid://soc7r4ay8onx"]
+
+[ext_resource type="Texture2D" uid="uid://badvye2137207" path="res://assets/paused.png" id="1_iv6t3"]
+[ext_resource type="Script" path="res://scenes/PauseMenu.gd" id="1_vufgs"]
+[ext_resource type="Texture2D" uid="uid://bite2ks1dxk7" path="res://assets/resume-button.png" id="2_hn8ox"]
+[ext_resource type="Texture2D" uid="uid://di25ybklqo87f" path="res://assets/retry-button.png" id="2_i30qj"]
+[ext_resource type="Texture2D" uid="uid://b14avwxot80yd" path="res://assets/retry-button-pressed.png" id="3_apx7t"]
+[ext_resource type="Texture2D" uid="uid://dnw35ni22glcn" path="res://assets/resume-button-pressed.png" id="3_slapt"]
+[ext_resource type="Texture2D" uid="uid://d0ltipmpe8ll2" path="res://assets/quit-button.png" id="4_a88gb"]
+[ext_resource type="Texture2D" uid="uid://dxsrp3sr1y50e" path="res://assets/quit-button-pressed.png" id="5_pfmj8"]
+[ext_resource type="Script" path="res://scenes/GameOver.gd" id="7_ae5pd"]
+
+[sub_resource type="SystemFont" id="SystemFont_yh37g"]
+font_names = PackedStringArray("Inconsolata")
+
+[node name="GameUI" type="MarginContainer" groups=["game_ui"]]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="Level" type="Label" parent="MarginContainer" groups=["level_label"]]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = SubResource("SystemFont_yh37g")
+
+[node name="Time" type="Label" parent="MarginContainer" groups=["time_label"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "time
+"
+horizontal_alignment = 1
+
+[node name="GameOver" type="CenterContainer" parent="."]
+process_mode = 3
+light_mask = 0
+visibility_layer = 4099
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("7_ae5pd")
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GameOver"]
+layout_mode = 2
+
+[node name="Retry" type="TextureButton" parent="GameOver/VBoxContainer2" groups=["retry"]]
+layout_mode = 2
+texture_normal = ExtResource("2_i30qj")
+texture_pressed = ExtResource("3_apx7t")
+
+[node name="Quit" type="TextureButton" parent="GameOver/VBoxContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("4_a88gb")
+texture_pressed = ExtResource("5_pfmj8")
+
+[node name="PauseMenu" type="CenterContainer" parent="."]
+process_mode = 3
+visible = false
+light_mask = 0
+visibility_layer = 4099
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_vufgs")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 2
+color = Color(0, 0, 0, 0.709804)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+process_mode = 3
+clip_contents = true
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_iv6t3")
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="Resume" type="TextureButton" parent="PauseMenu/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_hn8ox")
+texture_pressed = ExtResource("3_slapt")
+
+[node name="Quit" type="TextureButton" parent="PauseMenu/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_a88gb")
+texture_pressed = ExtResource("5_pfmj8")

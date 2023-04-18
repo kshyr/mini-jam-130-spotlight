@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbrxwr03p7ep7"]
+
+[ext_resource type="Script" path="res://scenes/credits/credits.gd" id="1_0d8jo"]
+
+[sub_resource type="SystemFont" id="SystemFont_bw0rt"]
+font_names = PackedStringArray("Inconsolata")
+font_weight = 700
+msdf_size = 72
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0d8jo")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.976471, 0.976471, 0.976471, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_bw0rt")
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 72
+text = "   Thank you for playing!
+ "
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 12
+text = "				Made by Kostiantyn Shyrolapov using Godot Engine
+
+		    				Assets by Kenney.nl and Trevor Pupkin"
+fit_content = true

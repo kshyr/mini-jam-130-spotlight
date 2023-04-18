@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=3 uid="uid://56ycx2uhs8ci"]
+
+[ext_resource type="PackedScene" uid="uid://f86h0e2a2jay" path="res://scenes/start_game_button.tscn" id="1_asuiy"]
+[ext_resource type="Texture2D" uid="uid://d2516gltmrcjo" path="res://assets/phase1-3.jpg" id="1_kpkid"]
+[ext_resource type="PackedScene" uid="uid://cnvl7m4sqs6gc" path="res://scenes/game.tscn" id="2_polvg"]
+[ext_resource type="Texture2D" uid="uid://cq3xc4d7cwuu0" path="res://assets/phase1-2.jpg" id="3_njhfl"]
+
+[sub_resource type="SystemFont" id="SystemFont_yu858"]
+font_names = PackedStringArray("Inconsolata")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_h5t4w"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Animation" id="Animation_7m8on"]
+resource_name = "demo"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_njhfl"), ExtResource("1_kpkid")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ic0gk"]
+_data = {
+"demo": SubResource("Animation_7m8on")
+}
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = SubResource("SystemFont_yu858")
+theme_override_font_sizes/normal_font_size = 12
+text = "You happen to be in a dark room full of enemies... or not? That's for you to discover. You can control spotlight to help you with this.
+
+Every 10 seconds spotlight turns on/off.
+When you control spotlight, you can't move and you can't fight, so be mindful of time you have in each phase. Room will be changed once you eliminate all enemies in a current one.
+
+Discover the room you're in, enemies' behavior, and use your knife wisely in order to succeed. Light your path out!
+"
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = SubResource("ViewportTexture_h5t4w")
+stretch_mode = 2
+
+[node name="StartGame" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_asuiy")]
+modulate = Color(0.835294, 0.835294, 0.835294, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+to_scene = ExtResource("2_polvg")
+
+[node name="SubViewport2" type="SubViewport" parent="."]
+size = Vector2i(160, 90)
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport2"]
+visible = false
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_kpkid")
+offset = Vector2(800, 400)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(160, 90)
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("3_njhfl")
+offset = Vector2(750, 400)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "demo"
+libraries = {
+"": SubResource("AnimationLibrary_ic0gk")
+}

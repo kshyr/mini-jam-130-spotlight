@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnvl7m4sqs6gc"]
+
+[ext_resource type="Script" path="res://scenes/LevelManager.gd" id="1_xgm01"]
+[ext_resource type="PackedScene" uid="uid://6v5xo7ps0noq" path="res://scenes/spotlight/spotlight.tscn" id="2_x76on"]
+[ext_resource type="Script" path="res://scenes/Timer.gd" id="3_akjbv"]
+[ext_resource type="PackedScene" uid="uid://soc7r4ay8onx" path="res://scenes/game_ui_container.tscn" id="4_ngsgy"]
+[ext_resource type="PackedScene" uid="uid://cjpv51uy8mckl" path="res://scenes/world/canvas_modulate.tscn" id="6_87w3c"]
+[ext_resource type="PackedScene" uid="uid://d3yde0ifqi2sc" path="res://scenes/levels/level1.tscn" id="6_qijb6"]
+
+[node name="Game" type="Node"]
+
+[node name="LevelManager" type="Node" parent="." groups=["level_manager"]]
+script = ExtResource("1_xgm01")
+
+[node name="Spotlight" parent="." instance=ExtResource("2_x76on")]
+
+[node name="Timer" type="Timer" parent="." groups=["timer"]]
+wait_time = 10.0
+autostart = true
+script = ExtResource("3_akjbv")
+
+[node name="CanvasModulate" parent="." instance=ExtResource("6_87w3c")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="CanvasLayer" instance=ExtResource("4_ngsgy")]
+
+[node name="Level1" parent="." instance=ExtResource("6_qijb6")]

@@ -1,0 +1,163 @@
+[gd_scene load_steps=14 format=3 uid="uid://ca7h6xjq1ts5o"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_vm7v6"]
+[ext_resource type="Texture2D" uid="uid://ccouy33u6u47b" path="res://assets/players grey x2.png" id="2_4pbes"]
+[ext_resource type="Texture2D" uid="uid://dn58ccdemyr52" path="res://assets/light.png" id="3_02byt"]
+[ext_resource type="Script" path="res://scenes/player/RayCast2D.gd" id="4_xubba"]
+[ext_resource type="Texture2D" uid="uid://cny8mqw6tej2s" path="res://assets/knife_trace.png" id="5_fbdji"]
+[ext_resource type="AudioStream" uid="uid://ngedv22j3kan" path="res://assets/389690__shamewap__small-knife-whoosh.wav" id="6_s2f7c"]
+[ext_resource type="AudioStream" uid="uid://cj4yt0gfudiu4" path="res://assets/460509__florianreichelt__hitting-in-a-face.mp3" id="7_aab6w"]
+[ext_resource type="AudioStream" uid="uid://c51j00dcirswh" path="res://assets/269721__seth-m__light-hum.wav" id="7_if1ec"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nf2mq"]
+radius = 7.0
+
+[sub_resource type="Animation" id="Animation_jkp1f"]
+resource_name = "dead"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -1.5708, -1.5708]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GotHit")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 2.96,
+"stream": ExtResource("7_aab6w")
+}, {
+"end_offset": 0.03,
+"start_offset": 0.0,
+"stream": ExtResource("7_if1ec")
+}, {
+"end_offset": 0.03,
+"start_offset": 0.0,
+"stream": ExtResource("7_if1ec")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_if1ec")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_if1ec")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_if1ec")
+}, {
+"end_offset": 0.03,
+"start_offset": 0.0,
+"stream": ExtResource("7_if1ec")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_if1ec")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_if1ec")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_if1ec")
+}],
+"times": PackedFloat32Array(0, 0.1, 1.2, 1.3, 2.4, 3.6, 3.7, 4.9, 6.1, 7.3)
+}
+tracks/1/use_blend = false
+
+[sub_resource type="Animation" id="Animation_6qs0v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jojhg"]
+resource_name = "attack"
+length = 0.2
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Attack")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.68,
+"start_offset": 0.5,
+"stream": ExtResource("6_s2f7c")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hmv84"]
+_data = {
+"RESET": SubResource("Animation_6qs0v"),
+"attack": SubResource("Animation_jojhg"),
+"dead": SubResource("Animation_jkp1f")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_vm7v6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_4pbes")
+offset = Vector2(0, -20)
+hframes = 8
+vframes = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nf2mq")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+rotation = -2.49931
+skew = 0.256563
+energy = 0.37
+texture = ExtResource("3_02byt")
+texture_scale = 0.85
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+script = ExtResource("4_xubba")
+
+[node name="KnifeAttack" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.843137)
+texture = ExtResource("5_fbdji")
+hframes = 2
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hmv84")
+}
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_s2f7c")
+
+[node name="GotHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_aab6w")
+volume_db = -4.982
